@@ -22,24 +22,8 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
             .position-ref {
                 position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
             }
 
             .content {
@@ -47,7 +31,14 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 44px;
+                margin-top: 3rem;
+            }
+
+            @media only screen and (min-width: 640px) {
+                .title {
+                    font-size: 84px;
+                }
             }
 
             .footer {
@@ -70,7 +61,7 @@
         </style>
     </head>
     <body>
-        <div id="app" class="flex-center position-ref full-height">
+        <div id="app" class="position-ref">
             <div class="content">
                 <div class="title m-b-md">
                     Blink {{ config('app.name') }} Light
