@@ -66,6 +66,16 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .message--error {
+                color: #b52f2f;
+                font-weight: bold;
+            }
+
+            .message--success {
+                color: #28b4cf;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
@@ -75,8 +85,12 @@
                     Blink {{ config('app.name') }} Light
                 </div>
 
-                @if (session()->has('message'))
-                <p>{{ session('message') }}</p>
+                @if (session()->has('success-message'))
+                    <p class="message--success">{{ session('success-message') }}</p>
+                @endif
+
+                @if (session()->has('error-message'))
+                    <p class="message--error">{{ session('error-message') }}</p>
                 @endif
 
                 <div class="links">
