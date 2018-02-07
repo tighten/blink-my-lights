@@ -9,7 +9,7 @@ Route::get('/', function () {
 Route::post('flash', function () {
     dispatch(new BlinkLight(request('color')));
 
-    return redirect('/')->with('success-message', 'Your blink has been queued!');
+    return response()->json(['message' => 'Your blink has been queued!']);
 })->middleware('throttle:50,1');
 
 Route::get('flash', function () {
