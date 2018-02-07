@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Blink {{ config('app.name') }} Lights</title>
 
@@ -66,71 +67,23 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-
-            .message--error {
-                color: #b52f2f;
-                font-weight: bold;
-            }
-
-            .message--success {
-                color: #28b4cf;
-                font-weight: bold;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div id="app" class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
                     Blink {{ config('app.name') }} Light
                 </div>
 
-                @if (session()->has('success-message'))
-                    <p class="message--success">{{ session('success-message') }}</p>
-                @endif
-
-                @if (session()->has('error-message'))
-                    <p class="message--error">{{ session('error-message') }}</p>
-                @endif
-
-                <div class="links">
-                    <form method="post" action="/flash">
-                        {{ csrf_field() }}
-
-                        <select name="color">
-                            <option value="kelvin:8000">Cold White</option>
-                            <option value="kelvin:5000">Cool White</option>
-                            <option value="kelvin:3500">Medium White</option>
-                            <option value="kelvin:3000">Warm White</option>
-                            <option value="kelvin:2700">Hot White</option>
-                            <option value="red">Red</option>
-                            <option value="orange">Orange</option>
-                            <option value="yellow">Yellow</option>
-                            <option value="green">Green</option>
-                            <option value="cyan">Cyan</option>
-                            <option value="blue">Blue</option>
-                            <option value="purple">Purple</option>
-                            <option value="pink">Pink</option>
-                            <option value="red saturation:0.5">Pastel Red</option>
-                            <option value="orange saturation:0.5">Pastel Orange</option>
-                            <option value="yellow saturation:0.5">Pastel Yellow</option>
-                            <option value="green saturation:0.5">Pastel Green</option>
-                            <option value="cyan saturation:0.5">Pastel Cyan</option>
-                            <option value="blue saturation:0.5">Pastel Blue</option>
-                            <option value="purple saturation:0.5">Pastel Purple</option>
-                            <option value="pink saturation:0.5">Pastel Pink</option>
-                            <option value="random">Random</option>
-                            <option value="blue">Blue</option>
-                        </select>
-
-                        <input type="submit" value="Queue my blink">
-                    </form>
-                </div>
+                <color-selector></color-selector>
 
                 <div class="footer">
                     <a href="https://github.com/mattstauffer/flash-my-lights">Source</a>
                 </div>
             </div>
         </div>
+
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
