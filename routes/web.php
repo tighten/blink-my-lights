@@ -11,3 +11,7 @@ Route::post('flash', function () {
 
     return redirect('/')->with('message', 'Your blink has been queued!');
 });
+
+Route::get('flash', function () {
+    return redirect('/');
+});
