@@ -49,6 +49,10 @@
                 font-size: 84px;
             }
 
+            .footer {
+                margin-top: 10em;
+            }
+
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -107,6 +111,10 @@
 
                         <input type="submit" value="Queue my blink">
                     </form>
+                </div>
+
+                <div class="footer">
+                    <a href="https://github.com/mattstauffer/flash-my-lights">Source</a>
                 </div>
             </div>
         </div>
