@@ -35,4 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'ifttt' => [
+        'webhook_key' => env('IFTTT_WEBHOOK_KEY'),
+    ]
+
 ];
