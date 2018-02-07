@@ -51,17 +51,15 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof TokenMismatchException) {
-            return redirect()
-                ->back()
-                ->withInput($request->except('_token'))
-                ->with('error-message', 'CSRF token failed; try again!');
+            return response()->json(
+                ['error' => 'CSRF token failed; try again!'],
+            500);
         }
 
         if ($exception instanceof HttpException && $exception->getStatusCode() == 429) {
-            return redirect()
-                ->back()
-                ->withInput($request->except('_token'))
-                ->with('error-message', "Too many requests; you'll burn the bulb!");
+            return response()->json(
+                ['error' => "Too many requests; you'll burn the bulb!"],
+            429);
         }
 
         return parent::render($request, $exception);
