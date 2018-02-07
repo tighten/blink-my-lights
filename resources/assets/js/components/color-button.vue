@@ -9,16 +9,16 @@
 
 <style lang="scss">
     .color-button {
-        margin: .5em;
+        margin: 5px;
 
         &__inner {
             background-color: #cccccc;
             border-radius: 100%;
             cursor: pointer;
-            height: 85%;
+            height: 100%;
             opacity: .7;
             transition: all .2s;
-            width: 85%;
+            width: 100%;
         }
 
         &__outer {
@@ -26,10 +26,11 @@
             border-radius: 100%;
             border: 3px solid transparent;
             display: flex;
-            height: 3.4em;
+            height: 50px;
             justify-content: center;
+            padding: 5px;
             transition: all .2s;
-            width: 3.4em;
+            width: 50px;
         }
 
         &:hover {
