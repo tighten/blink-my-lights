@@ -21,6 +21,7 @@
 
 <style lang="scss">
     .color-container {
+        margin: 0 3em;
         padding: 3em;
         border-radius: 10px;
         transition: background-color .4s ease;
