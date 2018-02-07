@@ -67,13 +67,13 @@
                 margin-bottom: 30px;
             }
 
-            .error {
-                color: #B52F2F;
+            .message--error {
+                color: #b52f2f;
                 font-weight: bold;
             }
 
-            .success {
-                color: #28B4CF;
+            .message--success {
+                color: #28b4cf;
                 font-weight: bold;
             }
         </style>
@@ -85,12 +85,12 @@
                     Blink {{ config('app.name') }} Light
                 </div>
 
-                @if (session()->has('success'))
-                <p class="success">{{ session('success') }}</p>
+                @if (session()->has('success-message'))
+                    <p class="message--success">{{ session('success-message') }}</p>
                 @endif
 
-                @if (session()->has('error'))
-                <p class="error">{{ session('error') }}</p>
+                @if (session()->has('error-message'))
+                    <p class="message--error">{{ session('error-message') }}</p>
                 @endif
 
                 <div class="links">

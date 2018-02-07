@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
-use \Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -54,14 +54,14 @@ class Handler extends ExceptionHandler
             return redirect()
                 ->back()
                 ->withInput($request->except('_token'))
-                ->with('error', 'CSRF token failed; try again!');
+                ->with('error-message', 'CSRF token failed; try again!');
         }
 
         if ($exception instanceof HttpException && $exception->getStatusCode() == 429) {
             return redirect()
                 ->back()
                 ->withInput($request->except('_token'))
-                ->with('error', "Too many requests; you'll burn the bulb!");
+                ->with('error-message', "Too many requests; you'll burn the bulb!");
         }
 
         return parent::render($request, $exception);
