@@ -57,7 +57,7 @@ class Handler extends ExceptionHandler
                 ->with('error', 'CSRF token failed; try again!');
         }
 
-        if ($exception instanceof HttpException) {
+        if ($exception instanceof HttpException && $exception->getStatusCode() == 429) {
             return redirect()
                 ->back()
                 ->withInput($request->except('_token'))
