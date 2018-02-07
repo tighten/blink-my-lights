@@ -6,10 +6,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('flash', function () {
-    dispatch(new BlinkLight(request('color')));
+Route::middleware('throttle:50,1')->group(function () {
+    Route::post('flash', function () {
+        dispatch(new BlinkLight(request('color')));
 
-    return redirect('/')->with('message', 'Your blink has been queued!');
+        return redirect('/')->with('success', 'Your blink has been queued!');
+    });
 });
 
 Route::get('flash', function () {
