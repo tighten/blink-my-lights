@@ -27,6 +27,10 @@ class Tweet implements ShouldQueue
      */
     public function handle(LightBlinked $event)
     {
+        if (! config('services.twitter.oauth_access_token')) {
+            return;
+        }
+
         $this->queue($event->color);
 
         if ($this->queueCount() >= 10) {
