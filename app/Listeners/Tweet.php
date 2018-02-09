@@ -60,7 +60,7 @@ class Tweet implements ShouldQueue
     protected function formatColor($color)
     {
         if (str_contains($color, 'saturation')) {
-            $color = 'Light ' . ucfirst(str_replace_last('saturation:0.5', '', $color));
+            $color = 'Light ' . ucfirst(str_replace_last(' saturation:0.5', '', $color));
         }
 
         if (str_contains($color, 'kelvin')) {
