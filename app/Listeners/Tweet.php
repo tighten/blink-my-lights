@@ -9,15 +9,29 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Tweet implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+    protected $colors = [
+        'kelvin:8000',
+        'kelvin:5000',
+        'kelvin:3500',
+        'kelvin:3000',
+        'kelvin:2700',
+        'red',
+        'orange',
+        'yellow',
+        'green',
+        'cyan',
+        'blue',
+        'purple',
+        'pink',
+        'red saturation:0.5',
+        'orange saturation:0.5',
+        'yellow saturation:0.5',
+        'green saturation:0.5',
+        'cyan saturation:0.5',
+        'blue saturation:0.5',
+        'purple saturation:0.5',
+        'pink saturation:0.5',
+    ];
 
     /**
      * Handle the event.
@@ -31,12 +45,21 @@ class Tweet implements ShouldQueue
             return;
         }
 
+        if (! $this->validLightColor($event->color)) {
+            return;
+        }
+
         $this->queue($event->color);
 
         if ($this->queueCount() >= 10) {
             $this->tweet();
             Cache::forget('color_queue');
         }
+    }
+
+    protected function validLightColor($color)
+    {
+        return in_array($color, $this->colors);
     }
 
     protected function queue($color)
