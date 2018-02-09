@@ -37,6 +37,13 @@ return [
 
     'ifttt' => [
         'webhook_key' => env('IFTTT_WEBHOOK_KEY'),
-    ]
+    ],
+
+    'twitter' => [
+        'oauth_access_token' => env('TWITTER_OAUTH_TOKEN'),
+        'oauth_access_token_secret' => env('TWITTER_OAUTH_SECRET'),
+        'consumer_key' => env('TWITTER_CONSUMER_KEY'),
+        'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
+    ],
 
 ];
