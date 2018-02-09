@@ -38,7 +38,7 @@ class Tweet implements ShouldQueue
     protected function queue($color)
     {
         $queue = Cache::get('color_queue');
-        $queue[] = $color ?? 'random';
+        $queue[] = $this->formatColor($color ?? 'random');
         Cache::forever('color_queue', $queue);
     }
 
@@ -55,5 +55,18 @@ class Tweet implements ShouldQueue
             ->buildOauth('https://api.twitter.com/1.1/statuses/update.json', 'POST')
             ->setPostFields(['status' => $tweet])
             ->performRequest();
+    }
+
+    protected function formatColor($color)
+    {
+        if (str_contains($color, 'saturation')) {
+            $color = 'Light ' . ucfirst(str_replace_last('saturation:0.5', '', $color));
+        }
+
+        if (str_contains($color, 'kelvin')) {
+            $color = substr($color, 7) . 'K';
+        }
+
+        return ucfirst($color);
     }
 }
