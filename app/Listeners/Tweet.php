@@ -31,6 +31,7 @@ class Tweet implements ShouldQueue
         'blue saturation:0.5',
         'purple saturation:0.5',
         'pink saturation:0.5',
+        'random',
     ];
 
     /**
@@ -45,11 +46,13 @@ class Tweet implements ShouldQueue
             return;
         }
 
-        if (! $this->validLightColor($event->color)) {
+        $color = $event->color ?? 'random';
+
+        if (! $this->validLightColor($color)) {
             return;
         }
 
-        $this->queue($event->color);
+        $this->queue($color);
 
         if ($this->queueCount() >= 10) {
             $this->tweet();
@@ -65,7 +68,7 @@ class Tweet implements ShouldQueue
     protected function queue($color)
     {
         $queue = Cache::get('color_queue');
-        $queue[] = $this->formatColor($color ?? 'random');
+        $queue[] = $this->formatColor($color);
         Cache::forever('color_queue', $queue);
     }
 
