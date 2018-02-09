@@ -15,7 +15,7 @@ http://blink.mattstauffer.com
 
 ## Twitter Settings
 
-1. While logged in, created an app at https://apps.twitter.com/app/new
+1. While logged in, create an app at https://apps.twitter.com/app/new
 2. In the "Keys and Access Tokens" tab, click "Create my access token".
 3. Copy the corresponding keys into your `.env`
 
