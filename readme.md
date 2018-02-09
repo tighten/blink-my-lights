@@ -12,3 +12,16 @@ http://blink.mattstauffer.com
 
 ## IFTTT Settings
 ![](ifttt-settings.png?raw=true)
+
+## Twitter Settings
+
+1. While logged in, created an app at https://apps.twitter.com/app/new
+2. In the "Keys and Access Tokens" tab, click "Create my access token".
+3. Copy the corresponding keys into your `.env`
+
+    ```
+    TWITTER_OAUTH_TOKEN=      # Access Token
+    TWITTER_OAUTH_SECRET=     # Access Token Secret
+    TWITTER_CONSUMER_KEY=     # Consumer Key (API Key)
+    TWITTER_CONSUMER_SECRET=  # Consumer Secret (API Secret)
+    ```
