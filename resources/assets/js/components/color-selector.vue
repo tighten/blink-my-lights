@@ -9,7 +9,7 @@
             ></color-button>
         </div>
 
-        <div class="color-row color-button__random" @click="submitColor('random')">
+        <div class="color-row color-button__random" @click="submitRandom">
             <h3>Random</h3>
         </div>
 
@@ -117,6 +117,15 @@ export default {
                 this.message = error.response.data.error;
             });
         },
+        submitRandom() {
+            let colors = Object.assign({}, this.colors.whites, this.colors.saturated, this.colors.pastels);
+            let randomColor = this.getRandomColor(colors);
+            this.submitColor(colors[randomColor], randomColor);
+        },
+        getRandomColor(colors) {
+            let colorKeys = Object.keys(colors);
+            return colorKeys[Math.floor(Math.random()*colorKeys.length)];
+        }
     },
 }
 </script>
