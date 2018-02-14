@@ -118,13 +118,16 @@ export default {
             });
         },
         submitRandom() {
-            let colors = Object.assign({}, this.colors.whites, this.colors.saturated, this.colors.pastels);
-            let randomColor = this.getRandomColor(colors);
-            this.submitColor(colors[randomColor], randomColor);
+            let randomColor = this.getRandomColor();
+            this.submitColor(randomColor, randomColor);
         },
-        getRandomColor(colors) {
-            let colorKeys = Object.keys(colors);
-            return colorKeys[Math.floor(Math.random()*colorKeys.length)];
+        getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
     },
 }

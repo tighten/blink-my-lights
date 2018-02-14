@@ -31,7 +31,6 @@ class Tweet implements ShouldQueue
         'blue saturation:0.5',
         'purple saturation:0.5',
         'pink saturation:0.5',
-        'random',
     ];
 
     /**
@@ -46,9 +45,7 @@ class Tweet implements ShouldQueue
             return;
         }
 
-        $color = $event->color ?? 'random';
-
-        if (! $this->validLightColor($color)) {
+        if (! $this->validLightColor($event->color)) {
             return;
         }
 
@@ -62,7 +59,7 @@ class Tweet implements ShouldQueue
 
     protected function validLightColor($color)
     {
-        return in_array($color, $this->colors);
+        return in_array($color, $this->colors) || preg_match('/^#[a-f0-9]{6}$/i', $color);
     }
 
     protected function queue($color)
