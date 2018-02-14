@@ -9,7 +9,7 @@
             ></color-button>
         </div>
 
-        <div class="color-row color-button__random" @click="submitColor('random')">
+        <div class="color-row color-button__random" @click="submitRandom">
             <h3>Random</h3>
         </div>
 
@@ -117,6 +117,18 @@ export default {
                 this.message = error.response.data.error;
             });
         },
+        submitRandom() {
+            let randomColor = this.getRandomColor();
+            this.submitColor(randomColor, randomColor);
+        },
+        getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
     },
 }
 </script>
