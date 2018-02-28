@@ -45,7 +45,7 @@ class Tweet implements ShouldQueue
             return;
         }
 
-        if (! $this->validLightColor($event->color)) {
+        if (! isset($event->color) || ! $this->validLightColor($event->color)) {
             return;
         }
 
