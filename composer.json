@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.1.3",
+        "php": ">=7.4",
         "fideloper/proxy": "~4.0",
         "j7mbo/twitter-api-php": "^1.0",
         "kitetail/zttp": "^0.3.0",
