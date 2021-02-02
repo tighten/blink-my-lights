@@ -9,7 +9,7 @@
         "fideloper/proxy": "~4.0",
         "j7mbo/twitter-api-php": "^1.0",
         "kitetail/zttp": "^0.3.0",
-        "laravel/framework": "5.6.*",
+        "laravel/framework": "6.20.*",
         "laravel/tinker": "~1.0",
         "pda/pheanstalk": "~3.0"
     },
